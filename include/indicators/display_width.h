@@ -119,7 +119,7 @@ namespace unicode
         };
 
         /* auxiliary function for binary search in interval table */
-        static int bisearch(wchar_t ucs, const struct interval *table, int max);
+        int bisearch(wchar_t ucs, const struct interval *table, int max);
 
         /*
             The following two functions define the column width of an ISO 10646
@@ -153,8 +153,8 @@ namespace unicode
             This implementation assumes that wchar_t characters are encoded
             in ISO 10646.
         */
-        static int mk_wcwidth(wchar_t ucs);
-        static int mk_wcswidth(const wchar_t *pwcs, size_t n);
+        int mk_wcwidth(wchar_t ucs);
+        int mk_wcswidth(const wchar_t *pwcs, size_t n);
 
         /*
             The following functions are the same as mk_wcwidth() and
@@ -165,22 +165,22 @@ namespace unicode
             the traditional terminal character-width behaviour. It is not
             otherwise recommended for general use.
         */
-        static int mk_wcwidth_cjk(wchar_t ucs);
+        int mk_wcwidth_cjk(wchar_t ucs);
 
-        static int mk_wcswidth_cjk(const wchar_t *pwcs, size_t n);
+        int mk_wcswidth_cjk(const wchar_t *pwcs, size_t n);
 
         /* convert UTF-8 string to wstring */
-        static std::wstring utf8_decode(const std::string &str);
+        std::wstring utf8_decode(const std::string &str);
 
         /* convert wstring to UTF-8 string */
-        static std::string utf8_encode(const std::wstring &str);
+        std::string utf8_encode(const std::wstring &str);
 
     } // namespace details
 
 #endif
 
-static int display_width(const std::string &input);
-static int display_width(const std::wstring &input);
+    int display_width(const std::string &input);
+    int display_width(const std::wstring &input);
 
 } // namespace unicode
 

@@ -42,10 +42,10 @@
 
 namespace indicators
 {
-    static void move_up(int lines);
-    static void move_down(int lines);
-    static void move_right(int cols);
-    static void move_left(int cols);
+    void move_up(int lines);
+    void move_down(int lines);
+    void move_right(int cols);
+    void move_left(int cols);
 } // namespace indicators
 
 #endif // INDICATORS_CURSOR_MOVEMENT_H

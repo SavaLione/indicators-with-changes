@@ -51,8 +51,8 @@
 
 namespace indicators
 {
-    static std::pair<size_t, size_t> terminal_size();
-    static size_t terminal_width();
+    std::pair<size_t, size_t> terminal_size();
+    size_t terminal_width();
 } // namespace indicators
 
 #endif // INDICATORS_TERMINAL_SIZE_H

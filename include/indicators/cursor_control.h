@@ -52,7 +52,7 @@
 
 namespace indicators
 {
-    static void show_console_cursor(bool const show);
-}
+    void show_console_cursor(bool const show);
+} // namespace indicators
 
 #endif // INDICATORS_CURSOR_CONTROL_H
