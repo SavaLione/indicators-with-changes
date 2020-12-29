@@ -82,7 +82,7 @@ set(INDICATORS_SOURCES
 )
 
 # static or dynamic
-option(INDICATORS_STATIC_LIB "${INDICATORS_PROJECT}. Build static library" OFF)
+option(INDICATORS_STATIC_LIB "${INDICATORS_PROJECT}. Build static library" ON)
 
 # examples
 option(INDICATORS_EXAMPLES "${INDICATORS_PROJECT}. Build examples" OFF)
@@ -109,6 +109,6 @@ if(1)
 #  add_subdirectory(examples)
     project(demo)
     add_executable(demo examples/demo.cpp)
-    target_link_libraries(demo indicators::indicators)
+    target_link_libraries(demo ${INDICATORS_PROJECT})
     target_include_directories(demo PUBLIC ${PROJECT_SOURCE_DIR}/include)
 endif()
