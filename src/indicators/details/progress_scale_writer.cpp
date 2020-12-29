@@ -43,7 +43,7 @@ namespace indicators
 {
     namespace details
     {
-        std::ostream ProgressScaleWriter::&write(float progress)
+        std::ostream &ProgressScaleWriter::write(float progress)
         {
             auto pos = static_cast<size_t>(progress * bar_width / 100.0);
             for (size_t i = 0, current_display_width = 0; i < bar_width;)
