@@ -41,7 +41,8 @@
 
 namespace indicators
 {
-    size_t DynamicProgress::push_back(Indicator &bar)
+    template <typename Indicator>
+    size_t DynamicProgress<Indicator>::push_back(Indicator &bar)
     {
         std::lock_guard<std::mutex> lock{mutex_};
         bar.multi_progress_mode_ = true;
@@ -49,7 +50,8 @@ namespace indicators
         return bars_.size() - 1;
     }
 
-    void DynamicProgress::print_progress()
+    template <typename Indicator>
+    void DynamicProgress<Indicator>::print_progress()
     {
         std::lock_guard<std::mutex> lock{mutex_};
         auto &hide_bar_when_complete = get_value<details::ProgressBarOption::hide_bar_when_complete>();
