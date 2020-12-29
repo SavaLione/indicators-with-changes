@@ -41,7 +41,7 @@
 
 namespace indicators
 {
-    inline void show_console_cursor(bool const show)
+    void show_console_cursor(bool const show)
     {
 #if defined(_MSC_VER)
         HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
