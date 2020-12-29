@@ -40,6 +40,16 @@
 #ifndef INDICATORS_CURSOR_CONTROL_H
 #define INDICATORS_CURSOR_CONTROL_H
 
+#if defined(_MSC_VER)
+#if !defined(NOMINMAX)
+#define NOMINMAX
+#endif
+#include <io.h>
+#include <windows.h>
+#else
+#include <cstdio>
+#endif
+
 namespace indicators
 {
     static void show_console_cursor(bool const show);

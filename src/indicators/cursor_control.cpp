@@ -39,16 +39,6 @@
  */
 #include "indicators/cursor_control.h"
 
-#if defined(_MSC_VER)
-#if !defined(NOMINMAX)
-#define NOMINMAX
-#endif
-#include <io.h>
-#include <windows.h>
-#else
-#include <cstdio>
-#endif
-
 namespace indicators
 {
 
