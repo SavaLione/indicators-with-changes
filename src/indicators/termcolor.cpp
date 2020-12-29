@@ -163,65 +163,7 @@ namespace termcolor
         return stream;
     }
 
-    template <uint8_t code>
-    std::ostream &color(std::ostream &stream)
-    {
-        if (_internal::is_colorized(stream))
-        {
-#if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
-            char command[12];
-            std::snprintf(command, sizeof(command), "\033[38;5;%dm", code);
-            stream << command;
-#elif defined(TERMCOLOR_OS_WINDOWS)
-#endif
-        }
-        return stream;
-    }
-
-    template <uint8_t code>
-    std::ostream &on_color(std::ostream &stream)
-    {
-        if (_internal::is_colorized(stream))
-        {
-#if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
-            char command[12];
-            std::snprintf(command, sizeof(command), "\033[48;5;%dm", code);
-            stream << command;
-#elif defined(TERMCOLOR_OS_WINDOWS)
-#endif
-        }
-        return stream;
-    }
-
-    template <uint8_t r, uint8_t g, uint8_t b>
-    std::ostream &color(std::ostream &stream)
-    {
-        if (_internal::is_colorized(stream))
-        {
-#if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
-            char command[20];
-            std::snprintf(command, sizeof(command), "\033[38;2;%d;%d;%dm", r, g, b);
-            stream << command;
-#elif defined(TERMCOLOR_OS_WINDOWS)
-#endif
-        }
-        return stream;
-    }
-
-    template <uint8_t r, uint8_t g, uint8_t b>
-    std::ostream &on_color(std::ostream &stream)
-    {
-        if (_internal::is_colorized(stream))
-        {
-#if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
-            char command[20];
-            std::snprintf(command, sizeof(command), "\033[48;2;%d;%d;%dm", r, g, b);
-            stream << command;
-#elif defined(TERMCOLOR_OS_WINDOWS)
-#endif
-        }
-        return stream;
-    }
+    /* here need template code */
 
     std::ostream &grey(std::ostream &stream)
     {

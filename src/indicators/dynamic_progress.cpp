@@ -42,24 +42,6 @@
 namespace indicators
 {
     template <typename Indicator>
-    template <typename T, details::ProgressBarOption id>
-    void DynamicProgress<Indicator>::set_option(details::Setting<T, id> &&setting)
-    {
-        static_assert(!std::is_same<T, typename std::decay<decltype(details::get_value<id>(std::declval<Settings>()))>::type>::value, "Setting has wrong type!");
-        std::lock_guard<std::mutex> lock(mutex_);
-        get_value<id>() = std::move(setting).value;
-    }
-
-    template <typename Indicator>
-    template <typename T, details::ProgressBarOption id>
-    void DynamicProgress<Indicator>::set_option(const details::Setting<T, id> &setting)
-    {
-        static_assert(!std::is_same<T, typename std::decay<decltype(details::get_value<id>(std::declval<Settings>()))>::type>::value, "Setting has wrong type!");
-        std::lock_guard<std::mutex> lock(mutex_);
-        get_value<id>() = setting.value;
-    }
-
-    template <typename Indicator>
     size_t DynamicProgress<Indicator>::push_back(Indicator &bar)
     {
         std::lock_guard<std::mutex> lock{mutex_};
