@@ -105,10 +105,15 @@ if(Threads_FOUND)
     target_link_libraries(${INDICATORS_PROJECT} Threads::Threads)
 endif()
 
+<<<<<<< HEAD
 if(INDICATORS_EXAMPLES)
 #    add_subdirectory(examples)
     project(demo)
     add_executable(demo examples/demo.cpp)
     target_link_libraries(demo ${INDICATORS_PROJECT})
     target_include_directories(demo PUBLIC ${PROJECT_SOURCE_DIR}/include)
+=======
+if(1)
+    add_subdirectory(examples)
+>>>>>>> parent of b1b36f6... examples
 endif()
