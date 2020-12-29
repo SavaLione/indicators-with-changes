@@ -81,10 +81,6 @@ set(INDICATORS_SOURCES
     src/indicators/terminal_size.cpp
 )
 
-message(STATUS ${INDICATORS_INCLUDES})
-message(STATUS "---")
-message(STATUS ${INDICATORS_SOURCES})
-
 # static or dynamic
 option(INDICATORS_STATIC_LIB "${INDICATORS_PROJECT}. Build static library" ON)
 
@@ -110,5 +106,8 @@ if(Threads_FOUND)
 endif()
 
 if(1)
-  add_subdirectory(examples)
+#  add_subdirectory(examples)
+    project(demo)
+    add_executable(demo examples/demo.cpp)
+    target_include_directories(demo PUBLIC ${PROJECT_SOURCE_DIR}/include)
 endif()
