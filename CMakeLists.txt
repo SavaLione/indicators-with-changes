@@ -82,7 +82,7 @@ set(INDICATORS_SOURCES
 )
 
 # static or dynamic
-option(INDICATORS_STATIC_LIB "${INDICATORS_PROJECT}. Build static library" ON)
+option(INDICATORS_STATIC_LIB "${INDICATORS_PROJECT}. Build static library" OFF)
 
 # examples
 option(INDICATORS_EXAMPLES "${INDICATORS_PROJECT}. Build examples" OFF)
