@@ -106,7 +106,7 @@ if(Threads_FOUND)
 endif()
 
 if(INDICATORS_EXAMPLES)
-    add_subdirectory(examples)
+#    add_subdirectory(examples)
     project(demo)
     add_executable(demo examples/demo.cpp)
     target_link_libraries(demo ${INDICATORS_PROJECT})
