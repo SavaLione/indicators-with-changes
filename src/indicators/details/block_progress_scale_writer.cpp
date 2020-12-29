@@ -43,7 +43,7 @@ namespace indicators
 {
     namespace details
     {
-        std::ostream BlockProgressScaleWriter::&write(float progress)
+        std::ostream &BlockProgressScaleWriter::write(float progress)
         {
             std::string fill_text{"█"};
             std::vector<std::string> lead_characters{" ", "▏", "▎", "▍", "▌", "▋", "▊", "▉"};
