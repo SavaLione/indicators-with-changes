@@ -80,12 +80,7 @@ namespace indicators
         size_t push_back(Indicator &bar);
 
         template <typename T, details::ProgressBarOption id>
-        void set_option(details::Setting<T, id> &&setting)
-        {
-            static_assert(!std::is_same<T, typename std::decay<decltype(details::get_value<id>(std::declval<Settings>()))>::type>::value, "Setting has wrong type!");
-            std::lock_guard<std::mutex> lock(mutex_);
-            get_value<id>() = std::move(setting).value;
-        }
+        void set_option(details::Setting<T, id> &&setting);
 
         template <typename T, details::ProgressBarOption id>
         void set_option(const details::Setting<T, id> &setting)
