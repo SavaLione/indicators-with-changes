@@ -52,10 +52,10 @@
 #include <tuple>
 #include <utility>
 
-#include <indicators/color.hpp>
-#include <indicators/setting.hpp>
-#include <indicators/terminal_size.hpp>
-#include <indicators/details/stream_helper.hpp>
+#include <indicators/color.h>
+#include <indicators/setting.h>
+#include <indicators/terminal_size.h>
+#include <indicators/details/stream_helper.h>
 
 namespace indicators
 {

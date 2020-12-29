@@ -40,9 +40,9 @@
 #ifndef INDICATORS_BLOCK_PROGRESS_SCALE_WRITER_H
 #define INDICATORS_BLOCK_PROGRESS_SCALE_WRITER_H
 
-#include <indicators/display_width.hpp>
-#include <indicators/setting.hpp>
-#include <indicators/termcolor.hpp>
+#include <indicators/display_width.h>
+#include <indicators/setting.h>
+#include <indicators/termcolor.h>
 
 #include <algorithm>
 #include <chrono>

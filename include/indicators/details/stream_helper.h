@@ -40,9 +40,9 @@
 #ifndef INDICATORS_STREAM_HELPER_H
 #define INDICATORS_STREAM_HELPER_H
 
-#include <indicators/display_width.hpp>
-#include <indicators/setting.hpp>
-#include <indicators/termcolor.hpp>
+#include <indicators/display_width.h>
+#include <indicators/setting.h>
+#include <indicators/termcolor.h>
 
 #include <indicators/details/block_progress_scale_writer.h>
 #include <indicators/details/indeterminate_progress_scale_writer.h>

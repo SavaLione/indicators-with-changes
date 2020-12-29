@@ -47,9 +47,9 @@
 #include <utility>
 #include <vector>
 
-#include <indicators/color.hpp>
-#include <indicators/font_style.hpp>
-#include <indicators/progress_type.hpp>
+#include <indicators/color.h>
+#include <indicators/font_style.h>
+#include <indicators/progress_type.h>
 
 namespace indicators
 {

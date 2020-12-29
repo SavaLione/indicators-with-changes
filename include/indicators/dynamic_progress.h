@@ -46,9 +46,9 @@
 #include <mutex>
 #include <vector>
 
-#include <indicators/color.hpp>
-#include <indicators/setting.hpp>
-#include <indicators/details/stream_helper.hpp>
+#include <indicators/color.h>
+#include <indicators/setting.h>
+#include <indicators/details/stream_helper.h>
 
 namespace indicators
 {
