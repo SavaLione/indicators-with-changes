@@ -91,12 +91,12 @@ namespace termcolor
         */
         static int colorize_index = std::ios_base::xalloc();
 
-        inline FILE *get_standard_stream(const std::ostream &stream);
-        inline bool is_colorized(std::ostream &stream);
-        inline bool is_atty(const std::ostream &stream);
+        FILE *get_standard_stream(const std::ostream &stream);
+        bool is_colorized(std::ostream &stream);
+        bool is_atty(const std::ostream &stream);
 
 #if defined(TERMCOLOR_OS_WINDOWS)
-        inline void win_change_attributes(std::ostream &stream, int foreground, int background = -1);
+        void win_change_attributes(std::ostream &stream, int foreground, int background = -1);
 #endif
     } // namespace _internal
 
@@ -111,67 +111,14 @@ namespace termcolor
     std::ostream &reverse(std::ostream &stream);
     std::ostream &concealed(std::ostream &stream);
     std::ostream &crossed(std::ostream &stream);
-
     template <uint8_t code>
-    inline std::ostream &color(std::ostream &stream)
-    {
-        if (_internal::is_colorized(stream))
-        {
-#if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
-            char command[12];
-            std::snprintf(command, sizeof(command), "\033[38;5;%dm", code);
-            stream << command;
-#elif defined(TERMCOLOR_OS_WINDOWS)
-#endif
-        }
-        return stream;
-    }
-
+    std::ostream &color(std::ostream &stream);
     template <uint8_t code>
-    inline std::ostream &on_color(std::ostream &stream)
-    {
-        if (_internal::is_colorized(stream))
-        {
-#if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
-            char command[12];
-            std::snprintf(command, sizeof(command), "\033[48;5;%dm", code);
-            stream << command;
-#elif defined(TERMCOLOR_OS_WINDOWS)
-#endif
-        }
-        return stream;
-    }
-
+    std::ostream &on_color(std::ostream &stream);
     template <uint8_t r, uint8_t g, uint8_t b>
-    inline std::ostream &color(std::ostream &stream)
-    {
-        if (_internal::is_colorized(stream))
-        {
-#if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
-            char command[20];
-            std::snprintf(command, sizeof(command), "\033[38;2;%d;%d;%dm", r, g, b);
-            stream << command;
-#elif defined(TERMCOLOR_OS_WINDOWS)
-#endif
-        }
-        return stream;
-    }
-
+    std::ostream &color(std::ostream &stream);
     template <uint8_t r, uint8_t g, uint8_t b>
-    inline std::ostream &on_color(std::ostream &stream)
-    {
-        if (_internal::is_colorized(stream))
-        {
-#if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
-            char command[20];
-            std::snprintf(command, sizeof(command), "\033[48;2;%d;%d;%dm", r, g, b);
-            stream << command;
-#elif defined(TERMCOLOR_OS_WINDOWS)
-#endif
-        }
-        return stream;
-    }
-
+    std::ostream &on_color(std::ostream &stream);
     std::ostream &grey(std::ostream &stream);
     std::ostream &red(std::ostream &stream);
     std::ostream &green(std::ostream &stream);

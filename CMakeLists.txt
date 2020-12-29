@@ -105,6 +105,6 @@ if(Threads_FOUND)
     target_link_libraries(${INDICATORS_PROJECT} Threads::Threads)
 endif()
 
-if(1)
+if(INDICATORS_EXAMPLES)
     add_subdirectory(examples)
 endif()
