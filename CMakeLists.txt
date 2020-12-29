@@ -101,3 +101,7 @@ target_include_directories(${INDICATORS_PROJECT} PUBLIC ${PROJECT_SOURCE_DIR}/in
 if(Threads_FOUND)
     target_link_libraries(${INDICATORS_PROJECT} Threads::Threads)
 endif()
+
+if(1)
+  add_subdirectory(examples)
+endif()
