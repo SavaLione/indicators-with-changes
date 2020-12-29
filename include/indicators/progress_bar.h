@@ -40,7 +40,24 @@
 #ifndef INDICATORS_PROGRESS_BAR_H
 #define INDICATORS_PROGRESS_BAR_H
 
+#include <algorithm>
+#include <atomic>
+#include <chrono>
+#include <cmath>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <mutex>
+#include <string>
+#include <thread>
+#include <tuple>
+#include <type_traits>
 #include <utility>
+
+#include <indicators/color.h>
+#include <indicators/setting.h>
+#include <indicators/terminal_size.h>
+#include <indicators/details/stream_helper.h>
 
 namespace indicators
 {
