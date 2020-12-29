@@ -185,7 +185,7 @@ namespace indicators
         return {result, result_size};
     }
 
-    void BlockProgressBar::print_progress(bool from_multi_progress = false)
+    void BlockProgressBar::print_progress(bool from_multi_progress)
     {
         std::lock_guard<std::mutex> lock{mutex_};
 
