@@ -39,15 +39,6 @@
  */
 #include "indicators/terminal_size.h"
 
-#if defined(_WIN32)
-#include <windows.h>
-#else
-#include <sys/ioctl.h> //ioctl() and TIOCGWINSZ
-#include <unistd.h>    // for STDOUT_FILENO
-#endif
-
-#if defined(_WIN32)
-
 namespace indicators
 {
 

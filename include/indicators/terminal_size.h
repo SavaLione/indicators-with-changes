@@ -40,6 +40,13 @@
 #ifndef INDICATORS_TERMINAL_SIZE_H
 #define INDICATORS_TERMINAL_SIZE_H
 
+#if defined(_WIN32)
+#include <windows.h>
+#else
+#include <sys/ioctl.h> //ioctl() and TIOCGWINSZ
+#include <unistd.h>    // for STDOUT_FILENO
+#endif
+
 #include <utility>
 
 namespace indicators
