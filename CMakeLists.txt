@@ -81,6 +81,10 @@ set(INDICATORS_SOURCES
     src/indicators/terminal_size.cpp
 )
 
+message(STATUS ${INDICATORS_INCLUDES})
+message(STATUS "---")
+message(STATUS ${INDICATORS_SOURCES})
+
 # static or dynamic
 option(INDICATORS_STATIC_LIB "${INDICATORS_PROJECT}. Build static library" ON)
 
