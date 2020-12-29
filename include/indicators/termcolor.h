@@ -74,6 +74,9 @@
 #endif
 #endif
 
+#include <iostream>
+#include <cstdio>
+
 namespace termcolor
 {
     /*

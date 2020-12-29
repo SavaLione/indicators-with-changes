@@ -40,9 +40,6 @@
  */
 #include "indicators/termcolor.h"
 
-#include <iostream>
-#include <cstdio>
-
 namespace termcolor
 {
     inline std::ostream &colorize(std::ostream &stream)
