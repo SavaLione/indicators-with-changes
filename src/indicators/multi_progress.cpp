@@ -33,13 +33,40 @@
 
 /**
  * @file
- * @brief Indeterminate progress bar
+ * @brief Multi progress
  * @author Pranav, SavaLione
- * @date 28 Dec 2020
+ * @date 29 Dec 2020
  */
-#include "indicators/indeterminate_progress_bar.h"
+#include "indicators/multi_progress.h"
 
 namespace indicators
 {
-    
+    bool MultiProgress::_all_completed()
+    {
+        bool result{true};
+        for (size_t i = 0; i < count; ++i)
+        {
+            result &= bars_[i].get().is_completed();
+        }
+        return result;
+    }
+
+    void MultiProgress::print_progress()
+    {
+        std::lock_guard<std::mutex> lock{mutex_};
+        if (started_)
+        {
+            move_up(count);
+        }
+        for (auto &bar : bars_)
+        {
+            bar.get().print_progress(true);
+            std::cout << "\n";
+        }
+        std::cout << termcolor::reset;
+        if (!started_)
+        {
+            started_ = true;
+        }
+    }
 } // namespace indicators

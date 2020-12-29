@@ -121,60 +121,15 @@ namespace indicators
             get_value<id>() = setting.value;
         }
 
-        void set_option(const details::Setting<std::string, details::ProgressBarOption::postfix_text> &setting)
-        {
-            std::lock_guard<std::mutex> lock(mutex_);
-            get_value<details::ProgressBarOption::postfix_text>() = setting.value;
-            if (setting.value.length() > get_value<details::ProgressBarOption::max_postfix_text_len>())
-            {
-                get_value<details::ProgressBarOption::max_postfix_text_len>() = setting.value.length();
-            }
-        }
+        void set_option(const details::Setting<std::string, details::ProgressBarOption::postfix_text> &setting);
 
-        void set_option(details::Setting<std::string, details::ProgressBarOption::postfix_text> &&setting)
-        {
-            std::lock_guard<std::mutex> lock(mutex_);
-            get_value<details::ProgressBarOption::postfix_text>() = std::move(setting).value;
-            auto &new_value = get_value<details::ProgressBarOption::postfix_text>();
-            if (new_value.length() > get_value<details::ProgressBarOption::max_postfix_text_len>())
-            {
-                get_value<details::ProgressBarOption::max_postfix_text_len>() = new_value.length();
-            }
-        }
+        void set_option(details::Setting<std::string, details::ProgressBarOption::postfix_text> &&setting);
 
-        void tick()
-        {
-            {
-                std::lock_guard<std::mutex> lock{mutex_};
-                if (get_value<details::ProgressBarOption::completed>())
-                {
-                    return;
-                }
+        void tick();
 
-                progress_ += (direction_ == Direction::forward) ? 1 : -1;
-                if (direction_ == Direction::forward && progress_ == max_progress_)
-                {
-                    // time to go back
-                    direction_ = Direction::backward;
-                }
-                else if (direction_ == Direction::backward && progress_ == 0)
-                {
-                    direction_ = Direction::forward;
-                }
-            }
-            print_progress();
-        }
+        bool is_completed();
 
-        bool is_completed()
-        {
-            return get_value<details::ProgressBarOption::completed>();
-        }
-
-        void mark_as_completed()
-        {
-            get_value<details::ProgressBarOption::completed>() = true;
-            print_progress();
-        }
+        void mark_as_completed();
 
     private:
         template <details::ProgressBarOption id>
@@ -201,89 +156,12 @@ namespace indicators
         friend class DynamicProgress;
         std::atomic<bool> multi_progress_mode_{false};
 
-        std::pair<std::string, size_t> get_prefix_text()
-        {
-            std::stringstream os;
-            os << get_value<details::ProgressBarOption::prefix_text>();
-            const auto result = os.str();
-            const auto result_size = unicode::display_width(result);
-            return {result, result_size};
-        }
+        std::pair<std::string, size_t> get_prefix_text();
 
-        std::pair<std::string, size_t> get_postfix_text()
-        {
-            std::stringstream os;
-            os << " " << get_value<details::ProgressBarOption::postfix_text>();
-
-            const auto result = os.str();
-            const auto result_size = unicode::display_width(result);
-            return {result, result_size};
-        }
+        std::pair<std::string, size_t> get_postfix_text();
 
     public:
-        void print_progress(bool from_multi_progress = false)
-        {
-            std::lock_guard<std::mutex> lock{mutex_};
-
-            auto &os = get_value<details::ProgressBarOption::stream>();
-
-            if (multi_progress_mode_ && !from_multi_progress)
-            {
-                return;
-            }
-            if (get_value<details::ProgressBarOption::foreground_color>() != Color::unspecified)
-            {
-                details::set_stream_color(os, get_value<details::ProgressBarOption::foreground_color>());
-            }
-
-            for (auto &style : get_value<details::ProgressBarOption::font_styles>())
-            {
-                details::set_font_style(os, style);
-            }
-
-            const auto prefix_pair = get_prefix_text();
-            const auto prefix_text = prefix_pair.first;
-            const auto prefix_length = prefix_pair.second;
-            os << prefix_text;
-
-            os << get_value<details::ProgressBarOption::start>();
-
-            details::IndeterminateProgressScaleWriter writer{
-                os, get_value<details::ProgressBarOption::bar_width>(),
-                get_value<details::ProgressBarOption::fill>(),
-                get_value<details::ProgressBarOption::lead>()};
-
-            writer.write(progress_);
-
-            os << get_value<details::ProgressBarOption::end>();
-
-            const auto postfix_pair = get_postfix_text();
-            const auto postfix_text = postfix_pair.first;
-            const auto postfix_length = postfix_pair.second;
-            os << postfix_text;
-
-            // Get length of prefix text and postfix text
-            const auto start_length = get_value<details::ProgressBarOption::start>().size();
-            const auto bar_width = get_value<details::ProgressBarOption::bar_width>();
-            const auto end_length = get_value<details::ProgressBarOption::end>().size();
-            const auto terminal_width = terminal_size().second;
-            // prefix + bar_width + postfix should be <= terminal_width
-            const int remaining = terminal_width - (prefix_length + start_length + bar_width + end_length + postfix_length);
-            if (remaining > 0)
-            {
-                os << std::string(remaining, ' ') << "\r";
-            }
-            else if (remaining < 0)
-            {
-                // Do nothing. Maybe in the future truncate postfix with ...
-            }
-            os.flush();
-
-            if (get_value<details::ProgressBarOption::completed>() && !from_multi_progress) // Don't std::endl if calling from MultiProgress
-            {
-                os << termcolor::reset << std::endl;
-            }
-        }
+        void print_progress(bool from_multi_progress = false);
     };
 } // namespace indicators
 

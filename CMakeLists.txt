@@ -41,17 +41,53 @@ project(${INDICATORS_PROJECT}
 # Threads
 find_package(Threads REQUIRED)
 
+set(INDICATORS_INCLUDES
+    include/indicators/details/block_progress_scale_writer.h
+    include/indicators/details/indeterminate_progress_scale_writer.h
+    include/indicators/details/progress_scale_writer.h
+    include/indicators/details/stream_helper.h
+    include/indicators/block_progress_bar.h
+    include/indicators/color.h
+    include/indicators/cursor_control.h
+    include/indicators/cursor_movement.h
+    include/indicators/display_width.h
+    include/indicators/dynamic_progress.h
+    include/indicators/font_style.h
+    include/indicators/indeterminate_progress_bar.h
+    include/indicators/multi_progress.h
+    include/indicators/progress_bar.h
+    include/indicators/progress_spinner.h
+    include/indicators/progress_type.h
+    include/indicators/setting.h
+    include/indicators/termcolor.h
+    include/indicators/terminal_size.h
+)
+
 set(INDICATORS_SOURCES
-    src/indicators/
+    src/indicators/details/block_progress_scale_writer.cpp
+    src/indicators/details/indeterminate_progress_scale_writer.cpp
+    src/indicators/details/progress_scale_writer.cpp
+    src/indicators/details/stream_helper.cpp
+    src/indicators/block_progress_bar.cpp
+    src/indicators/cursor_control.cpp
+    src/indicators/cursor_movement.cpp
+    src/indicators/display_width.cpp
+    src/indicators/dynamic_progress.cpp
+    src/indicators/indeterminate_progress_bar.cpp
+    src/indicators/multi_progress.cpp
+    src/indicators/progress_bar.cpp
+    src/indicators/progress_spinner.cpp
+    src/indicators/termcolor.cpp
+    src/indicators/terminal_size.cpp
 )
 
 # static or dynamic
 option(INDICATORS_STATIC_LIB "${INDICATORS_PROJECT}. Build static library" ON)
 
 if(INDICATORS_STATIC_LIB)
-	add_library(${INDICATORS_PROJECT} STATIC ${INDICATORS_SOURCES})
+	add_library(${INDICATORS_PROJECT} STATIC ${INDICATORS_SOURCES} ${INDICATORS_INCLUDES})
 else()
-	add_library(${INDICATORS_PROJECT} SHARED ${INDICATORS_SOURCES})
+	add_library(${INDICATORS_PROJECT} SHARED ${INDICATORS_SOURCES} ${INDICATORS_INCLUDES})
 endif()
 
 # library
