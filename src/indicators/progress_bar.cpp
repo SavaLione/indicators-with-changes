@@ -180,7 +180,9 @@ namespace indicators
         else
         {
             if (get_value<details::ProgressBarOption::show_elapsed_time>())
+            {
                 os << "]";
+            }
         }
 
         os << " " << get_value<details::ProgressBarOption::postfix_text>();

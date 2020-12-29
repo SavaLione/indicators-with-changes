@@ -40,6 +40,22 @@
 #ifndef INDICATORS_PROGRESS_SPINNER_H
 #define INDICATORS_PROGRESS_SPINNER_H
 
+#include <algorithm>
+#include <atomic>
+#include <chrono>
+#include <cmath>
+#include <iomanip>
+#include <iostream>
+#include <mutex>
+#include <string>
+#include <thread>
+#include <tuple>
+#include <vector>
+
+#include <indicators/color.h>
+#include <indicators/setting.h>
+#include <indicators/details/stream_helper.h>
+
 namespace indicators
 {
     class ProgressSpinner
