@@ -42,19 +42,19 @@
 
 namespace termcolor
 {
-    inline std::ostream &colorize(std::ostream &stream)
+    std::ostream &colorize(std::ostream &stream)
     {
         stream.iword(_internal::colorize_index) = 1L;
         return stream;
     }
 
-    inline std::ostream &nocolorize(std::ostream &stream)
+    std::ostream &nocolorize(std::ostream &stream)
     {
         stream.iword(_internal::colorize_index) = 0L;
         return stream;
     }
 
-    inline std::ostream &reset(std::ostream &stream)
+    std::ostream &reset(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -67,7 +67,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &bold(std::ostream &stream)
+    std::ostream &bold(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -79,7 +79,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &dark(std::ostream &stream)
+    std::ostream &dark(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -91,7 +91,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &italic(std::ostream &stream)
+    std::ostream &italic(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -103,7 +103,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &underline(std::ostream &stream)
+    std::ostream &underline(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -115,7 +115,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &blink(std::ostream &stream)
+    std::ostream &blink(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -127,7 +127,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &reverse(std::ostream &stream)
+    std::ostream &reverse(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -139,7 +139,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &concealed(std::ostream &stream)
+    std::ostream &concealed(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -151,7 +151,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &crossed(std::ostream &stream)
+    std::ostream &crossed(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -165,7 +165,7 @@ namespace termcolor
 
     /* here need template code */
 
-    inline std::ostream &grey(std::ostream &stream)
+    std::ostream &grey(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -180,7 +180,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &red(std::ostream &stream)
+    std::ostream &red(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -194,7 +194,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &green(std::ostream &stream)
+    std::ostream &green(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -208,7 +208,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &yellow(std::ostream &stream)
+    std::ostream &yellow(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -222,7 +222,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &blue(std::ostream &stream)
+    std::ostream &blue(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -236,7 +236,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &magenta(std::ostream &stream)
+    std::ostream &magenta(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -250,7 +250,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &cyan(std::ostream &stream)
+    std::ostream &cyan(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -264,7 +264,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &white(std::ostream &stream)
+    std::ostream &white(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -278,7 +278,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &on_grey(std::ostream &stream)
+    std::ostream &on_grey(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -293,7 +293,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &on_red(std::ostream &stream)
+    std::ostream &on_red(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -307,7 +307,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &on_green(std::ostream &stream)
+    std::ostream &on_green(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -321,7 +321,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &on_yellow(std::ostream &stream)
+    std::ostream &on_yellow(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -335,7 +335,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &on_blue(std::ostream &stream)
+    std::ostream &on_blue(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -349,7 +349,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &on_magenta(std::ostream &stream)
+    std::ostream &on_magenta(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -363,7 +363,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &on_cyan(std::ostream &stream)
+    std::ostream &on_cyan(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -377,7 +377,7 @@ namespace termcolor
         return stream;
     }
 
-    inline std::ostream &on_white(std::ostream &stream)
+    std::ostream &on_white(std::ostream &stream)
     {
         if (_internal::is_colorized(stream))
         {
@@ -393,7 +393,7 @@ namespace termcolor
 
     namespace _internal
     {
-        inline FILE *get_standard_stream(const std::ostream &stream)
+        FILE *get_standard_stream(const std::ostream &stream)
         {
             if (&stream == &std::cout)
                 return stdout;
@@ -403,12 +403,12 @@ namespace termcolor
             return nullptr;
         }
 
-        inline bool is_colorized(std::ostream &stream)
+        bool is_colorized(std::ostream &stream)
         {
             return is_atty(stream) || static_cast<bool>(stream.iword(colorize_index));
         }
 
-        inline bool is_atty(const std::ostream &stream)
+        bool is_atty(const std::ostream &stream)
         {
             FILE *std_stream = get_standard_stream(stream);
 
@@ -433,7 +433,7 @@ namespace termcolor
 #if defined(TERMCOLOR_OS_WINDOWS)
         //! Change Windows Terminal colors attribute. If some
         //! parameter is `-1` then attribute won't changed.
-        inline void win_change_attributes(std::ostream &stream, int foreground, int background)
+        void win_change_attributes(std::ostream &stream, int foreground, int background)
         {
             // yeah, i know.. it's ugly, it's windows.
             static WORD defaultAttributes = 0;

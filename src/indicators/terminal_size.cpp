@@ -42,7 +42,7 @@
 namespace indicators
 {
 
-    inline std::pair<size_t, size_t> terminal_size()
+    std::pair<size_t, size_t> terminal_size()
     {
 #if defined(_WIN32)
         CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -58,7 +58,7 @@ namespace indicators
 #endif
     }
 
-    inline size_t terminal_width()
+    size_t terminal_width()
     {
         return terminal_size().second;
     }

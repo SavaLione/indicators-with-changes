@@ -54,7 +54,7 @@ namespace indicators
 
 #ifdef _MSC_VER
 
-    inline void move(int x, int y)
+    void move(int x, int y)
     {
         auto hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
         if (!hStdout)
@@ -72,43 +72,43 @@ namespace indicators
         SetConsoleCursorPosition(hStdout, cursor);
     }
 
-    inline void move_up(int lines)
+    void move_up(int lines)
     {
         move(0, -lines);
     }
 
-    inline void move_down(int lines)
+    void move_down(int lines)
     {
         move(0, -lines);
     }
 
-    inline void move_right(int cols)
+    void move_right(int cols)
     {
         move(cols, 0);
     }
 
-    inline void move_left(int cols)
+    void move_left(int cols)
     {
         move(-cols, 0);
     }
 
 #else
-    inline void move_up(int lines)
+    void move_up(int lines)
     {
         std::cout << "\033[" << lines << "A";
     }
 
-    inline void move_down(int lines)
+    void move_down(int lines)
     {
         std::cout << "\033[" << lines << "B";
     }
 
-    inline void move_right(int cols)
+    void move_right(int cols)
     {
         std::cout << "\033[" << cols << "C";
     }
 
-    inline void move_left(int cols)
+    void move_left(int cols)
     {
         std::cout << "\033[" << cols << "D";
     }

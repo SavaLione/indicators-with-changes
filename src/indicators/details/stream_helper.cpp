@@ -43,7 +43,7 @@ namespace indicators
 {
     namespace details
     {
-        inline void set_stream_color(std::ostream &os, Color color)
+        void set_stream_color(std::ostream &os, Color color)
         {
             switch (color)
             {
@@ -77,7 +77,7 @@ namespace indicators
             }
         }
 
-        inline void set_font_style(std::ostream &os, FontStyle style)
+        void set_font_style(std::ostream &os, FontStyle style)
         {
             switch (style)
             {
@@ -110,7 +110,7 @@ namespace indicators
             }
         }
 
-        inline std::ostream &write_duration(std::ostream &os, std::chrono::nanoseconds ns)
+        std::ostream &write_duration(std::ostream &os, std::chrono::nanoseconds ns)
         {
             using namespace std;
             using namespace std::chrono;
