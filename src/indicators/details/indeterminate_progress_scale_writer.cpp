@@ -43,7 +43,7 @@ namespace indicators
 {
     namespace details
     {
-        std::ostream IndeterminateProgressScaleWriter::&write(size_t progress)
+        std::ostream &IndeterminateProgressScaleWriter::write(size_t progress)
         {
             for (size_t i = 0; i < bar_width;)
             {
