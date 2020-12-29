@@ -41,6 +41,14 @@
 
 namespace indicators
 {
+    template <typename T, details::ProgressBarOption id>
+    void BlockProgressBar::set_option(details::Setting<T, id> &&setting)
+    {
+        static_assert(!std::is_same<T, typename std::decay<decltype(details::get_value<id>(std::declval<Settings>()))>::type>::value, "Setting has wrong type!");
+        std::lock_guard<std::mutex> lock(mutex_);
+        get_value<id>() = std::move(setting).value;
+    }
+
     void BlockProgressBar::set_option(const details::Setting<std::string, details::ProgressBarOption::postfix_text> &setting)
     {
         std::lock_guard<std::mutex> lock(mutex_);
