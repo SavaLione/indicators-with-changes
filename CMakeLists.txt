@@ -85,7 +85,7 @@ set(INDICATORS_SOURCES
 option(INDICATORS_STATIC_LIB "${INDICATORS_PROJECT}. Build static library" ON)
 
 # examples
-option(INDICATORS_EXAMPLES "${INDICATORS_PROJECT}. Build examples" OFF)
+option(INDICATORS_EXAMPLES "${INDICATORS_PROJECT}. Build examples" ON)
 
 if(INDICATORS_STATIC_LIB)
 	add_library(${INDICATORS_PROJECT} STATIC ${INDICATORS_SOURCES} ${INDICATORS_INCLUDES})
@@ -106,5 +106,9 @@ if(Threads_FOUND)
 endif()
 
 if(INDICATORS_EXAMPLES)
-    add_subdirectory(examples)
+#    add_subdirectory(examples)
+    project(demo)
+    add_executable(demo examples/demo.cpp)
+    target_link_libraries(demo ${INDICATORS_PROJECT})
+    target_include_directories(demo PUBLIC ${PROJECT_SOURCE_DIR}/include)
 endif()
