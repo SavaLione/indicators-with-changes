@@ -40,6 +40,16 @@
 #ifndef INDICATORS_MULTI_PROGRESS_H
 #define INDICATORS_MULTI_PROGRESS_H
 
+#include <atomic>
+#include <functional>
+#include <iostream>
+#include <mutex>
+#include <vector>
+
+#include <indicators/color.h>
+#include <indicators/cursor_movement.h>
+#include <indicators/details/stream_helper.h>
+
 namespace indicators
 {
     template <typename Indicator, size_t count>
@@ -60,7 +70,9 @@ namespace indicators
         typename std::enable_if<(index >= 0 && index < count), void>::type set_progress(size_t value)
         {
             if (!bars_[index].get().is_completed())
+            {
                 bars_[index].get().set_progress(value);
+            }
             print_progress();
         }
 
@@ -68,7 +80,9 @@ namespace indicators
         typename std::enable_if<(index >= 0 && index < count), void>::type set_progress(float value)
         {
             if (!bars_[index].get().is_completed())
+            {
                 bars_[index].get().set_progress(value);
+            }
             print_progress();
         }
 
@@ -76,7 +90,9 @@ namespace indicators
         typename std::enable_if<(index >= 0 && index < count), void>::type tick()
         {
             if (!bars_[index].get().is_completed())
+            {
                 bars_[index].get().tick();
+            }
             print_progress();
         }
 

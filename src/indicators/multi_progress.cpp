@@ -41,7 +41,8 @@
 
 namespace indicators
 {
-    bool MultiProgress::_all_completed()
+    template <typename Indicator, size_t count>
+    bool MultiProgress<Indicator, count>::_all_completed()
     {
         bool result{true};
         for (size_t i = 0; i < count; ++i)
@@ -51,7 +52,8 @@ namespace indicators
         return result;
     }
 
-    void MultiProgress::print_progress()
+    template <typename Indicator, size_t count>
+    void MultiProgress<Indicator, count>::print_progress()
     {
         std::lock_guard<std::mutex> lock{mutex_};
         if (started_)
