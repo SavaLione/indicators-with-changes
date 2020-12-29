@@ -115,7 +115,7 @@ namespace indicators
         return {result, result_size};
     }
 
-    void IndeterminateProgressBar::print_progress(bool from_multi_progress = false)
+    void IndeterminateProgressBar::print_progress(bool from_multi_progress)
     {
         std::lock_guard<std::mutex> lock{mutex_};
 
